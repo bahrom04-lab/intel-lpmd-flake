@@ -7,8 +7,8 @@ pkgs.stdenv.mkDerivation rec {
   src = pkgs.fetchFromGitHub {
     owner = "intel";
     repo = pname;
-    rev = "9bf8b8de3ed11c301817814fef79b3161e6294b6";
-    sha256 = "sha256-mCR7ZGk79Hnl2zp8ywHSbi5Fk1ofNfsDt2joF61aHko=";
+    rev = "cdc762cf525fcc863fb8d6f897a677a2d2051bd2";
+    sha256 = "sha256-hNpcDia5v/RBOuPtdNv4MjS9b19qn58Sim/0k+sy6d8=";
   };
 
   nativeBuildInputs = with pkgs; [
@@ -35,11 +35,11 @@ pkgs.stdenv.mkDerivation rec {
     "--with-dbus-sys-dir=${placeholder "out"}/share/dbus-1/system-services/"
     "--without-systemdsystemunitdir"
     "--localstatedir=/var"
-    "--sysconfdir=/etc"
+    "--sysconfdir=${placeholder "out"}/etc"
   ];
 
   patchPhase = ''
-    sed -i '30,34d' data/Makefile.am
+    sed -i '30,38d' data/Makefile.am
   '';
 
   postInstall = ''
