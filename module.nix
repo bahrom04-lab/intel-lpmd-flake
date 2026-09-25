@@ -39,7 +39,7 @@ in
       meteorLake = mkEnableOption "Meteor Lake configuration (intel_lpmd_config_F6_M170.xml)";
       lunarLake = mkEnableOption "Lunar Lake configuration (intel_lpmd_config_F6_M189.xml)";
       pantherLake = mkEnableOption "Panther Lake configuration (intel_lpmd_config_F6_M204.xml)";
-      experimental = mkEnableOption "Experimental configuration (experimental.xml)";
+      experimental = mkEnableOption "Experimental configuration (intel_lpmd_config_experimental.xml)";
       custom = mkOption {
         type = types.nullOr (
           types.submodule {
@@ -109,7 +109,7 @@ in
           else if cfg.config.experimental then
             {
               source = "${pkg}/share/xml/intel_lpmd_config_experimental.xml";
-              targetName = "experimental.xml";
+              targetName = "intel_lpmd_config_experimental.xml";
             }
           else
             throw "Unreachable: assertion guarantees a valid config";
