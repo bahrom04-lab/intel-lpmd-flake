@@ -35,7 +35,7 @@ pkgs.stdenv.mkDerivation rec {
     "--with-dbus-sys-dir=${placeholder "out"}/share/dbus-1/system-services/"
     "--without-systemdsystemunitdir"
     "--localstatedir=/var"
-    "--sysconfdir=${placeholder "out"}/etc"
+    "--sysconfdir=/etc"
   ];
 
   patchPhase = ''
