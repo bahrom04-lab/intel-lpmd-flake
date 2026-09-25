@@ -108,7 +108,7 @@ in
             }
           else if cfg.config.experimental then
             {
-              source = "${pkg}/share/xml/experimental.xml";
+              source = "${pkg}/share/xml/intel_lpmd_config_experimental.xml";
               targetName = "experimental.xml";
             }
           else
@@ -116,6 +116,10 @@ in
       in
       {
         "intel_lpmd/${configChoice.targetName}".source = configChoice.source;
+
+        # https://github.com/intel/intel-lpmd/commit/14ae1eaf1ed005a490bff12a37c546a570fa3570
+        "intel_lpmd/process_cpuset.xml".source = "${pkg}/share/xml/process_cpuset.xml";
+        "intel_lpmd/process_cpuset_user.xml".source = "${pkg}/share/xml/process_cpuset_user.xml";
       };
 
     systemd.services.intel-lpmd = {
